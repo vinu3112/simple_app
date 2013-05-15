@@ -1,0 +1,21 @@
+Idea: Build an associative store application with following specification
+	1. Start server/Start event handler 
+	2. Stop server
+	3. Add user (Name,email_id)
+	4. Remove user
+	5. Find user (Name)
+	6. Show All user 
+
+Work:	
+Assoc_store_app: Will create a list of user registered and on Remove user delete user from that list and notify handler.
+Event_handler: On addition and deletion of user it create a log for that.
+
+Supervison:
+A supervisor will be there to supervise the App. If app fails it start it again using one_for_one policy.
+
+yeah 
+this how we do
+dfddfdsxxx
+fffsss
+ss
+ss
