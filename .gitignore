@@ -1,0 +1,12 @@
+# Compiled source #
+###################
+*.beam
+
+# Logs #
+######################
+*.log
+
+# OS generated files #
+######################
+.DS_Store
+._*
