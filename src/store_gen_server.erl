@@ -137,8 +137,8 @@ handle_call({Name,find},_From,State) ->
 	{reply, User, State};
 
 handle_call(terminate,_From,State) ->
-	gen_event:call(log_handle,?ASSOC_EVENT,terminate),
-	{reply,doneserver,State};
+	Ret=gen_event:stop(log_handle),
+	{reply,Ret,State};
 	
 
 handle_call(_Blah,_From,State) ->

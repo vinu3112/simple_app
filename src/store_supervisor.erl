@@ -54,6 +54,7 @@ start_link() ->
 %% ====================================================================
 
 init({RestartStrategy, MaxRestart, MaxTime}) ->
+process_flag(trap_exit,true),
 Store_gen_server = {?ASSOC_SERVER,{?ASSOC_SERVER,start_link,[]},permanent, 5000, worker, [?ASSOC_SERVER]},					 
 {ok, {{RestartStrategy, MaxRestart, MaxTime},
 [Store_gen_server]}}.
@@ -72,8 +73,8 @@ Store_gen_server = {?ASSOC_SERVER,{?ASSOC_SERVER,start_link,[]},permanent, 5000,
 % 			Result :: lists().
 %% ===================================================================
 stop()->
-		gen_server:call(assoc_server,terminate),
-		% io:format("done~p~n",Ret),
-		supervisor:terminate_child(?MODULE,assoc_server).
+		Ret=gen_server:call(assoc_server,terminate),
+		io:format("~p~n",[Ret]),
+		supervisor:terminate_child(?MODULE,?ASSOC_SERVER),
 		% store_gen_event:terminate(normalhai,[]),
-	    % exit(donewithit).
+	    exit(shutdown).
